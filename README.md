@@ -13,7 +13,7 @@ Supported upgrade items include:
 To use these changes, you need to add the following lines to your definition.
 ```lua
 _mcl_upgradable = true,
-_mcl_upgrade_item_material = "mcl_nether:netherite_ingot,
+_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
 _mcl_upgrade_item_name = {"diamond", "netherite"},
 ```
 This API relies on the item strings to be close other than the material name.
