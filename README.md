@@ -26,7 +26,7 @@ Replace the `_mcl_upgrade_item_name` paramter in the following pattern: first pa
 GNU General Public License
 
 ## Credits
-Fleckentstein and Code-Sploit for writing the original mcl_smithing_table mod.
+Special thank you to Fleckentstein and Code-Sploit for writing the original mcl_smithing_table mod.
 
 ## Contributing
 Found a bug or want a mod to work with this mod? Submit an issue on the [bug tracker](https://codeberg.org/PrairieWind/mcl_upgraded_smithing_table/issues). If you have a code fix, create a [pull request](https://codeberg.org/PrairieWind/mcl_upgraded_smithing_table/pulls) or post the code in an issue on the bug tracker.
