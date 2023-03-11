@@ -20,7 +20,7 @@ This API relies on the item strings to be close other than the material name.
 
 Replace the `_mcl_upgrade_item_material` paramter to the upgrade material to use. For example, to upgrade a wood sword to stone sword, this paramater would be "mcl_core:cobble". The upgrade material should also be in the `upgrade_material` group for this to work.
 
-Replace the `_mcl_upgrade_item_name` paramter in the following pattern: first part is the material type for item the line is in; while the second line is the material type of the upgraded item. For example, to upgrade a wood sword to stone sword, the defintion would be {"wood", "stone"}.
+Replace the `_mcl_upgrade_item_name` paramter in the following pattern: first part is the material type for item the line is in; while the second line is the material type of the upgraded item. For example, to upgrade a wood sword to stone sword, the defintion would be `{"wood", "stone"}`.
 
 ## License
 GNU General Public License
