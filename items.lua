@@ -259,6 +259,21 @@ if minetest.get_modpath("mcl_armor") then
 	})
 end
 
+if minetest.get_modpath("mcl_mobitems") then
+	-- Hors Armor
+	minetest.override_item("mcl_mobitems:iron_horse_armor", {
+		_mcl_upgradable = true,
+		_mcl_upgrade_item_material = "mcl_core:gold_ingot",
+		_mcl_upgrade_item_name = {"iron", "gold"},
+	})
+
+	minetest.override_item("mcl_mobitems:gold_horse_armor", {
+		_mcl_upgradable = true,
+		_mcl_upgrade_item_material = "mcl_core:diamond",
+		_mcl_upgrade_item_name = {"gold", "diamond"},
+	})
+end
+
 -- Upgrade Items
 minetest.override_item("mcl_core:cobble", {
 	groups = {pickaxey=1, building_block=1, material_stone=1, cobble=1, upgrade_material=1},
