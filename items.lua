@@ -64,63 +64,73 @@ if minetest.get_modpath("mcl_tools") then
 	-- Axes
 	minetest.override_item("mcl_tools:axe_wood", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:cobble",
-		_mcl_upgrade_item_name = {"wood", "stone"},
+		_mcl_upgrade_items = {
+			{"mcl_core:cobble", "wood", "stone", 2},
+		},
 	})
 
 	minetest.override_item("mcl_tools:axe_stone", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:iron_ingot",
-		_mcl_upgrade_item_name = {"stone", "iron"},
+		_mcl_upgrade_items = {
+			{"mcl_core:iron_ingot", "stone", "iron", 2},
+		},
 	})
 
 	minetest.override_item("mcl_tools:axe_iron", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:gold_ingot",
-		_mcl_upgrade_item_name = {"iron", "gold"},
+		_mcl_upgrade_items = {
+			{"mcl_core:gold_ingot", "iron", "gold", 2},
+		},
 	})
 
 	minetest.override_item("mcl_tools:axe_gold", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:diamond",
-		_mcl_upgrade_item_name = {"gold", "diamond"},
+		_mcl_upgrade_items = {
+			{"mcl_core:diamond", "gold", "diamond", 1},
+		},
 	})
 
 	minetest.override_item("mcl_tools:axe_diamond", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
-		_mcl_upgrade_item_name = {"diamond", "netherite"},
+		_mcl_upgrade_items = {
+			{"mcl_nether:netherite_ingot", "diamond", "netherite", 1},
+		},
 	})
 
 	-- Pickaxes
 	minetest.override_item("mcl_tools:pick_wood", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:cobble",
-		_mcl_upgrade_item_name = {"wood", "stone"},
+		_mcl_upgrade_items = {
+			{"mcl_core:cobble", "wood", "stone", 2},
+		},
 	})
 
 	minetest.override_item("mcl_tools:pick_stone", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:iron_ingot",
-		_mcl_upgrade_item_name = {"stone", "iron"},
+		_mcl_upgrade_items = {
+			{"mcl_core:iron_ingot", "stone", "iron", 2},
+		},
 	})
 
 	minetest.override_item("mcl_tools:pick_iron", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:gold_ingot",
-		_mcl_upgrade_item_name = {"iron", "gold"},
+		_mcl_upgrade_items = {
+			{"mcl_core:gold_ingot", "iron", "gold", 2},
+		},
 	})
 
 	minetest.override_item("mcl_tools:pick_gold", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:diamond",
-		_mcl_upgrade_item_name = {"gold", "diamond"},
+		_mcl_upgrade_items = {
+			{"mcl_core:diamond", "gold", "diamond", 2},
+		},
 	})
 
 	minetest.override_item("mcl_tools:pick_diamond", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
-		_mcl_upgrade_item_name = {"diamond", "netherite"},
+		_mcl_upgrade_items = {
+			{"mcl_nether:netherite_ingot", "diamond", "netherite", 1},
+		},
 	})
 end
 
@@ -186,76 +196,88 @@ if minetest.get_modpath("mcl_armor") then
 	-- Iron Armor
 	minetest.override_item("mcl_armor:helmet_iron", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:gold_ingot",
-		_mcl_upgrade_item_name = {"iron", "gold"},
+		_mcl_upgrade_items = {
+			{"mcl_core:gold_ingot", "iron", "gold", 3},
+		},
 	})
 
 	minetest.override_item("mcl_armor:chestplate_iron", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:gold_ingot",
-		_mcl_upgrade_item_name = {"iron", "gold"},
+		_mcl_upgrade_items = {
+			{"mcl_core:gold_ingot", "iron", "gold", 4},
+		},
 	})
 
 	minetest.override_item("mcl_armor:leggings_iron", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:gold_ingot",
-		_mcl_upgrade_item_name = {"iron", "gold"},
+		_mcl_upgrade_items = {
+			{"mcl_core:gold_ingot", "iron", "gold", 4},
+		},
 	})
 
 	minetest.override_item("mcl_armor:boots_iron", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:gold_ingot",
-		_mcl_upgrade_item_name = {"iron", "gold"},
+		_mcl_upgrade_items = {
+			{"mcl_core:gold_ingot", "iron", "gold", 2},
+		},
 	})
 
 	-- Gold Armor
 	minetest.override_item("mcl_armor:helmet_gold", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:diamond",
-		_mcl_upgrade_item_name = {"gold", "diamond"},
+		_mcl_upgrade_items = {
+			{"mcl_core:diamond", "gold", "diamond", 3},
+		},
 	})
 
 	minetest.override_item("mcl_armor:chestplate_gold", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:diamond",
-		_mcl_upgrade_item_name = {"gold", "diamond"},
+		_mcl_upgrade_items = {
+			{"mcl_core:diamond", "gold", "diamond", 4},
+		},
 	})
 
 	minetest.override_item("mcl_armor:leggings_gold", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:diamond",
-		_mcl_upgrade_item_name = {"gold", "diamond"},
+		_mcl_upgrade_items = {
+			{"mcl_core:diamond", "gold", "diamond", 4},
+		},
 	})
 
 	minetest.override_item("mcl_armor:boots_gold", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_core:diamond",
-		_mcl_upgrade_item_name = {"gold", "diamond"},
+		_mcl_upgrade_items = {
+			{"mcl_core:diamond", "gold", "diamond", 2},
+		},
 	})
 
 	-- Diamond Armor
 	minetest.override_item("mcl_armor:helmet_diamond", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
-		_mcl_upgrade_item_name = {"diamond", "netherite"},
+		_mcl_upgrade_items = {
+			{"mcl_nether:netherite_ingot", "diamond", "netherite", 1},
+		},
 	})
 
 	minetest.override_item("mcl_armor:chestplate_diamond", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
-		_mcl_upgrade_item_name = {"diamond", "netherite"},
+		_mcl_upgrade_items = {
+			{"mcl_nether:netherite_ingot", "diamond", "netherite", 1},
+		},
 	})
 
 	minetest.override_item("mcl_armor:leggings_diamond", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
-		_mcl_upgrade_item_name = {"diamond", "netherite"},
+		_mcl_upgrade_items = {
+			{"mcl_nether:netherite_ingot", "diamond", "netherite", 1},
+		},
 	})
 
 	minetest.override_item("mcl_armor:boots_diamond", {
 		_mcl_upgradable = true,
-		_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
-		_mcl_upgrade_item_name = {"diamond", "netherite"},
+		_mcl_upgrade_items = {
+			{"mcl_nether:netherite_ingot", "diamond", "netherite", 1},
+		},
 	})
 end
 

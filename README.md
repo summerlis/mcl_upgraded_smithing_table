@@ -1,5 +1,5 @@
 # Upgraded Smithing Tables for MineClone 2
-This mod adds the ability to upgrade all the other tiers of tools and armor besides the usual diamond armor. Be warned though that it is not possible to upgrade leather armor. 
+This mod adds the ability to upgrade all the other tiers of tools and armor besides the usual diamond armor.
 
 Supported upgrade items include:
 * Wood -> Stone
@@ -13,8 +13,16 @@ Supported upgrade items include:
 To use these changes, you need to add the following lines to your definition.
 ```lua
 _mcl_upgradable = true,
-_mcl_upgrade_item_material = "mcl_nether:netherite_ingot",
-_mcl_upgrade_item_name = {"diamond", "netherite"},
+_mcl_upgrade_item_material = final_material,
+_mcl_upgrade_item_name = {upgraded_material_name, final_material_name},
+
+-- or:
+
+_mcl_upgradable = true,
+_mcl_upgrade_items = {
+    {final_material, upgraded_material_name, final_material_name, final_material_amount}, -- and / or
+    {final_material2, upgraded_material_name, final_material_name2, final_material_amount, modname_override},
+},
 ```
 This API relies on the item strings to be close other than the material name.
 
@@ -26,6 +34,7 @@ Replace the `_mcl_upgrade_item_name` paramter in the following pattern: first pa
 GNU General Public License
 
 ## Credits
+Original mod by mt-mods
 Special thank you to Fleckentstein and Code-Sploit for writing the original mcl_smithing_table mod.
 
 ## Contributing
