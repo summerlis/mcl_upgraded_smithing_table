@@ -1,4 +1,4 @@
-# Upgraded Smithing Tables for MineClone 2
+# (DEPRECIATED) Upgraded Smithing Tables for MineClone 2
 ### Modified version of mcl_upgraded_smithing_table (by mt-mods) that allows for differently sized upgrade material requirements, multiple different upgrades for a single item, and fixes a crash with mod-ids being overwritten by material names.
 This mod adds the ability to upgrade all the other tiers of tools and armor besides the usual diamond armor.
 
