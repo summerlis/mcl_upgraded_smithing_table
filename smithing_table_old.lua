@@ -12,7 +12,7 @@ function modname_from_itemname(itemname)
     return result
 end
 
-function mcl_smithing_table.upgrade_item_netherite(itemstack, material)
+function mcl_smithing_table.upgrade_item(itemstack, material)
 	local def = itemstack:get_definition()
 
 	if not def or not def._mcl_upgradable or (material == nil and def._mcl_upgrade_items) then
@@ -45,7 +45,6 @@ function mcl_smithing_table.upgrade_item_netherite(itemstack, material)
 	end
 
 	itemstack:set_name(upgrade_item)
-	mcl_armor.reload_trim_inv_image(itemstack)
 
 	-- Reload the ToolTips of the tool
 
@@ -55,59 +54,43 @@ function mcl_smithing_table.upgrade_item_netherite(itemstack, material)
 	return itemstack
 end
 
+
 local function reset_upgraded_item(pos)
 	local inv = minetest.get_meta(pos):get_inventory()
 	local upgraded_item
-	local upgrade_item_stack = inv:get_stack("upgrade_item", 1)
-	local mineral_stack = inv:get_stack("mineral", 1)
-	local upgradeitems
+	local diamond_stack = inv:get_stack("diamond_item", 1)
+	local netherite_stack = inv:get_stack("netherite", 1)
+	local dstack_upgradeitems
 
-	local original_itemname = inv:get_stack("upgrade_item", 1):get_name()
-	local template_present = inv:get_stack("template",1):get_name() ~= ""
-	local is_armor = original_itemname:find("mcl_armor:") ~= nil
-	local is_trimmed = original_itemname:find("_trimmed") ~= nil
-
-	if template_present then
-		if template_present and is_armor and not is_trimmed and mcl_smithing_table.is_smithing_mineral(inv:get_stack("mineral", 1):get_name()) then
-			upgraded_item = mcl_smithing_table.upgrade_trimmed(upgrade_item_stack,inv:get_stack("mineral", 1),inv:get_stack("template", 1))
+	if diamond_stack:get_definition()._mcl_upgrade_item_material then
+		if netherite_stack:get_name() == diamond_stack:get_definition()._mcl_upgrade_item_material then
+			upgraded_item = mcl_smithing_table.upgrade_item(inv:get_stack("diamond_item", 1), 1)
 		end
-	else
-		if upgrade_item_stack:get_definition()._mcl_upgrade_item_material then
-			if mineral_stack:get_name() == upgrade_item_stack:get_definition()._mcl_upgrade_item_material then
-				upgraded_item = mcl_smithing_table.upgrade_item_netherite(inv:get_stack("upgrade_item", 1), 1)
-			end
-		elseif upgrade_item_stack:get_definition()._mcl_upgrade_items then
-			upgradeitems = upgrade_item_stack:get_definition()._mcl_upgrade_items
+	elseif diamond_stack:get_definition()._mcl_upgrade_items then
+		dstack_upgradeitems = diamond_stack:get_definition()._mcl_upgrade_items
 
-			for i = 1, #upgradeitems do
-				if upgradeitems[i][1] == mineral_stack:get_name() and upgradeitems[i][4] <= mineral_stack:get_count() then
-					upgraded_item = mcl_smithing_table.upgrade_item_netherite(inv:get_stack("upgrade_item", 1), i)
-					break
-				end
+		for i = 1, #dstack_upgradeitems do
+			if dstack_upgradeitems[i][1] == netherite_stack:get_name() and dstack_upgradeitems[i][4] <= netherite_stack:get_count() then
+				upgraded_item = mcl_smithing_table.upgrade_item(inv:get_stack("diamond_item", 1), i)
+				break
 			end
 		end
 	end
+
 	inv:set_stack("upgraded_item", 1, upgraded_item)
 
 end
 
 minetest.override_item("mcl_smithing_table:table", {
 	on_metadata_inventory_put = reset_upgraded_item,
-
 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local stackname = stack:get_name()
-		local def = stack:get_definition()
-
-		if (listname == "upgrade_item" and (def._mcl_upgradable or (def._mcl_armor_element and not mcl_armor.trims.blacklisted[stackname])))
-		or (listname == "mineral" and (stack:get_definition().groups.upgrade_material ~= nil or mcl_smithing_table.is_smithing_mineral(stackname)))
-		or (listname == "template" and string.find(stack:get_name(), "mcl_armor"))
-		then
+		if (listname == "diamond_item" and mcl_smithing_table.upgrade_item(stack, 1)) or (listname == "netherite" and stack:get_definition().groups.upgrade_material ~= nil) then
 			return stack:get_count()
 		end
 
 		return 0
 	end,
-	
+
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		local inv = minetest.get_meta(pos):get_inventory()
 
@@ -118,22 +101,22 @@ minetest.override_item("mcl_smithing_table:table", {
 		end
 
 		if listname == "upgraded_item" then
-			local ddef = inv:get_stack("upgrade_item", 1):get_definition()
+			local ddef = inv:get_stack("diamond_item", 1):get_definition()
 			
-			take_item("upgrade_item")
+			take_item("diamond_item")
 
 			if ddef._mcl_upgrade_items then
 				ddef = ddef._mcl_upgrade_items
 				for i = 1, #ddef do
-					if ddef[i][1] == inv:get_stack("mineral", 1):get_name() then
+					if ddef[i][1] == inv:get_stack("netherite", 1):get_name() then
 						for i = 1, ddef[i][4] do
-							take_item("mineral")
+							take_item("netherite")
 						end
 						break
 					end
 				end
 			else
-				take_item("mineral")
+				take_item("netherite")
 			end
 
 			-- ToDo: make epic sound
